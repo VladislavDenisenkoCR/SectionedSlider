@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
  s.name = 'SpeechifySectionedSlider'
- s.version = '0.0.2'
+ s.version = '0.0.6'
  s.license = { :type => "MIT", :file => "LICENSE" }
  s.summary = 'Speechify Control Center Slider'
  s.homepage = 'https://github.com/SpeechifyInc/SectionedSlider'
