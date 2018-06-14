@@ -431,8 +431,8 @@ open class SectionedSlider: UIView {
     
     @IBInspectable open var sections: Int = 10 {
         willSet {
-            if newValue < 2 || newValue > 136 {
-                debugPrint("sections must be between 2 and 20")
+            if newValue < 2 {
+                debugPrint("sections must be more than 2")
             }
         }
     }
