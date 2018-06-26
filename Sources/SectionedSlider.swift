@@ -446,6 +446,8 @@ open class SectionedSlider: UIView {
             }
         }
     }
+    
+    @IBInspectable open var isSetupFactorExternally: Bool = false
 
     open var factor: CGFloat = 0.0 {
         willSet {
@@ -577,7 +579,11 @@ open class SectionedSlider: UIView {
         var x = self.frame.height - touch.location(in: self).y
         x = x < 0 ? -1 : (x > self.frame.height ? self.frame.height : x)
 
-        factor = x / self.frame.height
+        let factor = x / self.frame.height
+        if !isSetupFactorExternally {
+            self.factor = factor
+        }
+        
         delegate?.sectionChanged(slider: self, selected: abs(Int(ceil(CGFloat(factor) * CGFloat(sections)))))
         
     }
@@ -587,7 +593,12 @@ open class SectionedSlider: UIView {
         let point = gesture.location(in: self)
         var x = self.frame.height - point.y
         x = x < 0 ? -1 : (x > self.frame.height ? self.frame.height : x)
-        factor = x / self.frame.height
+        
+        let factor = x / self.frame.height
+        if !isSetupFactorExternally {
+            self.factor = factor
+        }
+        
         delegate?.sectionChanged(slider: self, selected: abs(Int(ceil(CGFloat(factor) * CGFloat(sections)))))
         
     }
