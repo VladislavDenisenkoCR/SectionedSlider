@@ -18,7 +18,7 @@ public class StyleKit : NSObject {
 
     //// Drawing Methods
 
-    public static func drawSlider(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 156, height: 400), resizing: ResizingBehavior = .aspectFit, factor: CGFloat = 0.0, sections: CGFloat = 10, palette: Palette = Palette()) {
+    public static func drawSlider(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 156, height: 400), resizing: ResizingBehavior = .stretch, factor: CGFloat = 0.0, sections: CGFloat = 10, palette: Palette = Palette()) {
         
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()!
