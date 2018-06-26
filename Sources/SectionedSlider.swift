@@ -447,11 +447,9 @@ open class SectionedSlider: UIView {
         }
     }
 
-    private var factor: CGFloat = 0.0 {
+    open var factor: CGFloat = 0.0 {
         willSet {
             (layer as? SectionedSliderLayer)?.factor = newValue
-			delegate?.sectionChanged(slider: self, selected: abs(Int(ceil(CGFloat(newValue) * CGFloat(sections)))))
-
             draw()
         }
     }
@@ -580,7 +578,8 @@ open class SectionedSlider: UIView {
         x = x < 0 ? -1 : (x > self.frame.height ? self.frame.height : x)
 
         factor = x / self.frame.height
-
+        delegate?.sectionChanged(slider: self, selected: abs(Int(ceil(CGFloat(factor) * CGFloat(sections)))))
+        
     }
     
     @objc private func dragged(gesture: UIPanGestureRecognizer) {
@@ -589,6 +588,7 @@ open class SectionedSlider: UIView {
         var x = self.frame.height - point.y
         x = x < 0 ? -1 : (x > self.frame.height ? self.frame.height : x)
         factor = x / self.frame.height
+        delegate?.sectionChanged(slider: self, selected: abs(Int(ceil(CGFloat(factor) * CGFloat(sections)))))
         
     }
     
